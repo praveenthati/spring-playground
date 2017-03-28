@@ -12,6 +12,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 
 @WebMvcTest
 @RunWith(SpringRunner.class)
@@ -31,5 +33,11 @@ public class EndpointsControllerTest {
                 .andExpect(content().string("3.141592653589793"));
 
 
+    }
+
+    @Test
+    public void testgetVehicles() throws Exception {
+        this.mvc.perform(get("/vehicles?year=1987&doors=2"))
+                .andExpect(status().isOk());
     }
 }
