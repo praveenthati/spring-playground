@@ -83,6 +83,7 @@ public class EndpointsControllerTest {
     @Test
     public void testMathService() throws Exception {
 
+
         MathService service = new MathService();
 
         List<String> valuesList = new ArrayList<>();
