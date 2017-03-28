@@ -9,7 +9,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.ArrayList;
+import java.util.List;
 
+
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -74,5 +78,23 @@ public class EndpointsControllerTest {
         this.mvc.perform(post("/math/sum?n=4&n=5&n=6"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("4 + 5 + 6 = 15"));
+    }
+
+    @Test
+    public void testMathService() throws Exception {
+
+        MathService service = new MathService();
+
+        List<String> valuesList = new ArrayList<>();
+        valuesList.add("2");
+        valuesList.add("2");
+        valuesList.add("2000");
+
+        assertEquals(service.sum(valuesList),"2 + 2 + 2000 = 2004");
+        assertEquals(service.calculate("add", 2,2),"2 + 2 = 4");
+        assertEquals(service.calculate("divide", 2,2),"2 / 2 = 1");
+        assertEquals(service.calculate("subtract", 2,2),"2 - 2 = 0");
+        assertEquals(service.calculate("multiply", 2,2),"2 * 2 = 4");
+
     }
 }
