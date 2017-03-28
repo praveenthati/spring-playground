@@ -35,7 +35,7 @@ class MathService {
 
         int i = 0;
 
-        if (params != null) {
+        if (params != null && params.size() > 0) {
 
             for (int index = 0; index < params.size(); index++) {
 
@@ -56,9 +56,11 @@ class MathService {
 
             stringBuilder.append(" = ");
             stringBuilder.append(Integer.toString(i));
+
+            return stringBuilder.toString();
         }
 
-        return stringBuilder.toString();
+        return "0";
     }
 
 

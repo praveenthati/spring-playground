@@ -86,6 +86,8 @@ public class EndpointsControllerTest {
         MathService service = new MathService();
 
         List<String> valuesList = new ArrayList<>();
+        assertEquals(service.sum(valuesList),"0");
+
         valuesList.add("2");
         valuesList.add("2");
         valuesList.add("2000");
