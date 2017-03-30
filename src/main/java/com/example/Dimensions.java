@@ -1,12 +1,5 @@
 package com.example;
 
-import sun.security.provider.SHA;
-
-import java.util.Optional;
-
-/**
- * Created by Praveen Thati on 3/30/17.
- */
 public class Dimensions {
 
     private String type;
