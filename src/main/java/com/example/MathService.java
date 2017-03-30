@@ -95,8 +95,14 @@ class MathService {
 
         switch (dimensions.getType().toUpperCase()) {
             case "CIRCLE":
+                if(dimensions.getRadius() <= 0)
+                    return "Invalid";
                 return String.format("Area of a circle with a radius of %f is %f", dimensions.getRadius(), dimensions.getArea());
             case "RECTANGLE":
+                if(dimensions.getLength() <= 0)
+                    return "Invalid";
+                if(dimensions.getWidth() <= 0)
+                    return "Invalid";
                 return String.format("Area of a %fx%f rectangle is %f", dimensions.getLength(), dimensions.getWidth(), dimensions.getArea());
             default:
                 return "Invalid";
