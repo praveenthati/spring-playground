@@ -1,7 +1,10 @@
 package com.example;
 
 
+import sun.security.provider.SHA;
+
 import java.util.List;
+import java.util.OptionalDouble;
 
 class MathService {
 
@@ -63,5 +66,41 @@ class MathService {
         return "0";
     }
 
+    String area(String shape, double width, double length, double radius) {
+        if (shape == null)
+            return "Invalid";
+
+        switch (shape.toUpperCase()) {
+            case "CIRCLE":
+
+                Dimensions circle = new Dimensions();
+                circle.setRadius(radius);
+                circle.setType("circle");
+                return String.format("Area of a circle with a radius of %f is %f", radius, circle.getArea());
+            case "RECTANGLE":
+
+                Dimensions rectangle = new Dimensions();
+                rectangle.setLength(length);
+                rectangle.setWidth(width);
+                rectangle.setType("rectangle");
+                return String.format("Area of a %fx%f rectangle is %f", length, width, rectangle.getArea());
+            default:
+                return "Invalid";
+        }
+    }
+
+    String area(Dimensions dimensions) {
+        if (dimensions == null || dimensions.getType() == null)
+            return "Invalid";
+
+        switch (dimensions.getType().toUpperCase()) {
+            case "CIRCLE":
+                return String.format("Area of a circle with a radius of %f is %f", dimensions.getRadius(), dimensions.getArea());
+            case "RECTANGLE":
+                return String.format("Area of a %fx%f rectangle is %f", dimensions.getLength(), dimensions.getWidth(), dimensions.getArea());
+            default:
+                return "Invalid";
+        }
+    }
 
 }
