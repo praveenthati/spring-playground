@@ -1,9 +1,8 @@
 package com.example;
 
 import com.fasterxml.jackson.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -73,80 +72,20 @@ public class FlightsController {
 
         return Arrays.asList(flight,flight2);
     }
-}
 
-class Flight {
-
-    private Date departs;
-    private List<Ticket> tickets;
-
-    @JsonGetter("Tickets")
-    public List<Ticket> getTickets() {
-        return tickets;
-    }
-
-    public void setTicket(List<Ticket> tickets) {
-        this.tickets = tickets;
-    }
+    @PostMapping(value = "/tickets/total")
+    public Total computeTicketsTotal(@RequestBody Flight input){
+        Total total = new Total();
 
 
-    @JsonGetter("Departs")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    public Date getDeparts() {
-        return departs;
-    }
+        double sum = 0;
+        for (int i=0;i<input.getTickets().size();i++){
+            sum = sum + input.getTickets().get(i).getPrice();
+        }
 
-    public void setDeparts(Date departs) {
-        this.departs = departs;
+        total.setResult(sum);
+
+        return total;
     }
 }
 
-@JsonPropertyOrder({"passenger","price"})
-class Ticket {
-
-    @JsonProperty("Passenger")
-    private Passenger passenger;
-    @JsonProperty("Price")
-    private double price;
-
-
-    public Passenger getPassenger() {
-        return passenger;
-    }
-
-    public void setPassenger(Passenger passenger) {
-        this.passenger = passenger;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-}
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
-class Passenger {
-    @JsonProperty("FirstName")
-    private String firstName;
-    @JsonProperty("LastName")
-    private String lastName;
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-}
