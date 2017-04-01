@@ -10,19 +10,6 @@ import java.util.Date;
 import java.util.List;
 
 
-//{
-//        "departs": "2017-04-21 14:34",
-//        "tickets": [
-//        {
-//        "passenger": {
-//        "firstName": "Some name",
-//        "lastName": "Some other name"
-//        },
-//        "price": 200
-//        }
-//        ]
-//        }
-
 @RestController
 @RequestMapping("/flights")
 public class FlightsController {
