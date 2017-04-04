@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.controller.PathVariableController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest
+@WebMvcTest(PathVariableController.class)
 public class PathVariableControllerTest {
 
     @Autowired

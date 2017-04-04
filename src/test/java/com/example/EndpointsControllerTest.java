@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.controller.EndpointsController;
 import com.example.service.MathService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
-@WebMvcTest
+@WebMvcTest(EndpointsController.class)
 @RunWith(SpringRunner.class)
 public class EndpointsControllerTest {
 

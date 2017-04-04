@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.controller.FlightsController;
 import com.example.model.Flight;
 import com.example.model.Ticket;
 import com.google.gson.Gson;
@@ -28,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringRunner.class)
-@WebMvcTest
+@WebMvcTest(FlightsController.class)
 public class FlightsControllerTest {
 
     @Autowired

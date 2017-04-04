@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.controller.FormDataController;
 import com.example.service.MathService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import java.util.*;
 
-@WebMvcTest
+@WebMvcTest(FormDataController.class)
 @RunWith(SpringRunner.class)
 public class FormDataControllerTest {
 

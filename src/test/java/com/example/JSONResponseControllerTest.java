@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.controller.JSONController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.hamcrest.Matchers.is;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest
+@WebMvcTest(JSONController.class)
 public class JSONResponseControllerTest {
 
     @Autowired
