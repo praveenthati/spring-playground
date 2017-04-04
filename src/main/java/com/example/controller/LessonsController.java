@@ -1,7 +1,7 @@
 package com.example.controller;
 
-import com.example.model.Lesson;
-import com.example.model.LessonRepository;
+import com.example.model.entity.Lesson;
+import com.example.model.entityrepository.LessonRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
