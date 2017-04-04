@@ -1,9 +1,9 @@
-package com.example;
+package com.example.model;
 
 /**
  * Created by Praveen Thati on 4/1/17.
  */
-class Total{
+public class Total{
     double result;
 
     public void setResult(double result){

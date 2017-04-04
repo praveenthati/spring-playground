@@ -1,5 +1,7 @@
-package com.example;
+package com.example.controller;
 
+import com.example.model.Lesson;
+import com.example.model.LessonRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/lessons")
 public class LessonsController {
 
-    private final LessonRepository repository;
+    private LessonRepository repository;
 
     public LessonsController(LessonRepository repository) {
         this.repository = repository;

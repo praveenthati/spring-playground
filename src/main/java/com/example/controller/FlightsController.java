@@ -1,7 +1,9 @@
-package com.example;
+package com.example.controller;
 
-import com.fasterxml.jackson.annotation.*;
-import org.springframework.http.MediaType;
+import com.example.model.Flight;
+import com.example.model.Passenger;
+import com.example.model.Ticket;
+import com.example.model.Total;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;

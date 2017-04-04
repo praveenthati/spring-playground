@@ -1,4 +1,4 @@
-package com.example;
+package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonGetter;
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Praveen Thati on 4/1/17.
  */
-class Flight {
+public class Flight {
 
     private Date departs;
     private List<Ticket> tickets;

@@ -1,11 +1,13 @@
-package com.example;
+package com.example.service;
+
+import com.example.model.Dimensions;
 
 import java.util.List;
 
 
-class MathService {
+public class MathService {
 
-    String calculate(String operation, int x, int y) {
+    public String calculate(String operation, int x, int y) {
 
         if (operation == null)
             return "specify operation";
@@ -29,7 +31,7 @@ class MathService {
 
     }
 
-    String sum(List<String> params) {
+    public String sum(List<String> params) {
 
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -63,7 +65,7 @@ class MathService {
         return "0";
     }
 
-    String area(String shape, double width, double length, double radius) {
+    public String area(String shape, double width, double length, double radius) {
         if (shape == null)
             return "Invalid";
 
@@ -86,7 +88,7 @@ class MathService {
         }
     }
 
-    String area(Dimensions dimensions) {
+    public String area(Dimensions dimensions) {
         if (dimensions == null || dimensions.getType() == null)
             return "Invalid";
 

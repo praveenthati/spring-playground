@@ -1,4 +1,4 @@
-package com.example;
+package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * Created by Praveen Thati on 4/1/17.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-class Passenger {
+public class Passenger {
 
     private String firstName;
 

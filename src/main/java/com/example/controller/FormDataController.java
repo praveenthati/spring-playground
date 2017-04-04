@@ -1,11 +1,12 @@
-package com.example;
+package com.example.controller;
 
+import com.example.service.MathService;
+import com.example.model.Comment;
+import com.example.model.Dimensions;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalDouble;
 
 @RestController
 public class FormDataController {
