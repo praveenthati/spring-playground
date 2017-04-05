@@ -21,7 +21,7 @@ public class LessonsController {
     }
 
     @PatchMapping("/{id}")
-    public Lesson updateLesson(@PathVariable Long id,@RequestBody Lesson body) {
+    public Lesson updateLesson(@PathVariable Long id, @RequestBody Lesson body) {
 
         // fetch lesson before updating
         // because body might be for diff id
