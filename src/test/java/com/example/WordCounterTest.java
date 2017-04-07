@@ -44,12 +44,11 @@ public class WordCounterTest {
 
     @Before
     public void setUpExpectedResult(){
-        expectedResult.put("A",1);
+
         expectedResult.put("brown",2);
         expectedResult.put("cow",1);
         expectedResult.put("jumps",1);
         expectedResult.put("over",1);
-        expectedResult.put("a",1);
         expectedResult.put("fox",1);
 
     }
@@ -68,7 +67,7 @@ public class WordCounterTest {
                 .contentType(MediaType.TEXT_PLAIN)
                 .content(input))
                 .andExpect(status().isOk())
-                .andExpect(content().string("{\"A\":1,\"brown\":2,\"cow\":1,\"jumps\":1,\"over\":1,\"a\":1,\"fox\":1}"));
+                .andExpect(content().string("{\"brown\":2,\"cow\":1,\"jumps\":1,\"over\":1,\"fox\":1}"));
 
 
     }
