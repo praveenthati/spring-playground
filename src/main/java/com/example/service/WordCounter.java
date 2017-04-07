@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @Configuration
 public class WordCounter {
 
+
     public Map<String, Integer> count(String input){
 
         if(input == null)
@@ -40,3 +41,4 @@ public class WordCounter {
 
     }
 }
+
