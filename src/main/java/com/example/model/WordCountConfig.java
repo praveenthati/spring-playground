@@ -12,6 +12,7 @@ public class WordCountConfig {
 
     private Boolean caseSensitive;
     private Words words;
+    private String delimiter;
 
     public Boolean getCaseSensitive(){
         return this.caseSensitive;

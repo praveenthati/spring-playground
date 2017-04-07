@@ -37,6 +37,8 @@ public class WordCounter {
 
         for(String word : input.trim().replaceAll("[^\\w\\s]", "").split("\\s+"))
         {
+            // do you want us to consider case for excluded words too or will they be in small case ?
+
             if(!this.WordCountConfig.getWords().getSkip().contains(word)) {
                 if (!wordCounter.containsKey(word)) {
                     wordCounter.put(word, 1);
