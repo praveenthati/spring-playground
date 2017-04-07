@@ -25,6 +25,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+// please check WordCounterTestWithMockBean for WebMvcTest with MockBean
+// can you let me know if WordCounter is implemented correctly ?
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
