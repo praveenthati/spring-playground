@@ -27,6 +27,10 @@ public class OMDBService {
         ).getSearch();
     }
 
+    public RestTemplate getRestTemplate(){
+        return  this.template;
+    }
+
     public static class MoviesResult{
         private List<Movies> search;
         private String totalResults;
