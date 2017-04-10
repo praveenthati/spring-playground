@@ -11,8 +11,8 @@ import java.util.List;
 @Service
 public class OMDBService {
 
-    OMDBConfig config;
-    RestTemplate template = new RestTemplate();
+   private final OMDBConfig config;
+   private final RestTemplate template = new RestTemplate();
 
     public OMDBService(OMDBConfig config){
         this.config = config;
@@ -20,7 +20,7 @@ public class OMDBService {
 
     public List<Movies> getMovies(String movieName){
         return this.template.getForObject(
-                config.getMoviesEndPoint(),
+                String.format("%s/?s={movieName}",config.getMoviesEndPoint()),
                 MoviesResult.class,
                 movieName
 
