@@ -15,7 +15,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 public class testOMDBService {
 
     @Autowired
-    private OMDBService service;
+    private  OMDBService service;
 
     @Test
     public void testGetMovies(){
