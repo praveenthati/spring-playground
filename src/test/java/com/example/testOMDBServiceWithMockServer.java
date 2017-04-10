@@ -51,7 +51,7 @@ public class testOMDBServiceWithMockServer {
     public void getMovies() throws Exception {
 
         mockServer
-                .expect(requestTo("http://www.omdbapi.com/?s=harry"))                // <-- #2
+                .expect(requestTo("http://www.omdbapi.com/?s=harry"))                // <-- #checking for query string
                 .andExpect(method(HttpMethod.GET))                              // <-- #3
                 .andRespond(withSuccess(getMoviesResponseJson("/data.json"), MediaType.APPLICATION_JSON)); // <-- #4
 
