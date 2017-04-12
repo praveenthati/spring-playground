@@ -17,7 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         //since you are overriding the default configure method, you need to tell Spring to use Basic Authentication again
         http.httpBasic();
-        http.authorizeRequests().mvcMatchers("/lessons/**","/vehicles/**","/flights/**", "/math/**").permitAll();
+        http.authorizeRequests().mvcMatchers("/words/**","/lessons/**","/vehicles/**","/flights/**", "/math/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated();
     }
 
