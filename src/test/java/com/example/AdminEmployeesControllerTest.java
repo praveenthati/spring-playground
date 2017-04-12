@@ -13,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.Base64Utils;
 
 
 import static org.hamcrest.CoreMatchers.is;
@@ -132,6 +134,14 @@ public class AdminEmployeesControllerTest {
 
         this.mvc.perform(get("/employees"))
                 .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    public void okResponseWithBasicAuthCredentialsForKnownUser() throws Exception {
+        this.mvc
+                .perform(get("/employees").header(HttpHeaders.AUTHORIZATION,
+                        "Basic " + Base64Utils.encodeToString("employee:my-employee-password".getBytes())))
+                .andExpect(status().isOk());
     }
 
 
