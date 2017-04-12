@@ -73,7 +73,10 @@ public class AdminEmployeesControllerTest {
 
         //check for not authorized path
         this.mvc.perform(get("/admin/employees"))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").exists())
+                .andExpect(jsonPath("$[0].salary").exists());
+
 
     }
 
