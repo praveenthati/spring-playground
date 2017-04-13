@@ -18,6 +18,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -45,6 +47,9 @@ public class AdminEmployeesControllerTest {
     @Autowired
     MockMvc mvc;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @MockBean
     private EmployeeRepository employeeRepository;
     private Gson gson = new GsonBuilder().create();
@@ -59,7 +64,7 @@ public class AdminEmployeesControllerTest {
         employee.setUsername("Employee1");
         employee.setSalary(1000);
         employee.setRole("EMPLOYEE");
-        employee.setPassword("sample");
+        employee.setPassword(passwordEncoder.encode("sample"));
         employeesList.add(employee);
 
         employee = new Employee();
@@ -67,7 +72,7 @@ public class AdminEmployeesControllerTest {
         employee.setUsername("Employee2");
         employee.setSalary(2000);
         employee.setRole("EMPLOYEE");
-        employee.setPassword("sample");
+        employee.setPassword(passwordEncoder.encode("sample"));
         employeesList.add(employee);
 
 
@@ -76,7 +81,7 @@ public class AdminEmployeesControllerTest {
         employee.setUsername("Employee3");
         employee.setSalary(2000);
         employee.setRole("EMPLOYEE");
-        employee.setPassword("sample");
+        employee.setPassword(passwordEncoder.encode("sample"));
         employeesList.add(employee);
 
         when(employeeRepository.findAll()).thenReturn(employeesList);
@@ -165,6 +170,8 @@ public class AdminEmployeesControllerTest {
     public void okResponseWithBasicAuthCredentialsForKnownUser() throws Exception {
 
         when(employeeRepository.findByUsername("Employee2")).thenReturn(employeesList.get(1));
+
+
 
         this.mvc
                 .perform(get("/employees").header(HttpHeaders.AUTHORIZATION,
