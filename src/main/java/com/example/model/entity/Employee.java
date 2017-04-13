@@ -1,17 +1,20 @@
 package com.example.model.entity;
 
 import com.example.Views;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
 
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Employee {
+public class Employee implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,17 +22,72 @@ public class Employee {
     private Long id;
     @JsonView(Views.Secured.class)
     private String name;
+    @Column(unique = true)
+    private String username;
+    @JsonIgnore
+    private String password;
+    private String role;
+    private int salary;
+    @JsonView(Views.Secured.class)
+    private Long managerId;
 
-    public Employee(){
+    public Employee() {
 
     }
 
-    public Employee(String name, int salary, Long managerId) {
-        this.name = name;
-        this.salary = salary;
-        this.managerId = managerId;
+    public String getUsername() {
+        return username;
     }
 
+    @Override
+    @JsonIgnore
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    @JsonIgnore
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    @JsonIgnore
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + this.role));
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public int getSalary() {
         return salary;
@@ -39,8 +97,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    private int salary;
-
     public Long getManagerId() {
         return managerId;
     }
@@ -48,9 +104,6 @@ public class Employee {
     public void setManagerId(Long managerId) {
         this.managerId = managerId;
     }
-
-    @JsonView(Views.Secured.class)
-    private Long managerId;
 
     public Long getId() {
         return id;

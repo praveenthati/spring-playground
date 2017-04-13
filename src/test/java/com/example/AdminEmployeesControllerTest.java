@@ -2,7 +2,7 @@ package com.example;
 
 import com.example.model.entity.Employee;
 import com.example.model.entityrepository.EmployeeRepository;
-import com.example.service.EmployeeService;
+import com.example.service.EmployeeDetailsService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jayway.jsonpath.JsonPath;
@@ -51,11 +51,33 @@ public class AdminEmployeesControllerTest {
     @Before
     public void setUpExpectedResult(){
 
-        employeesList.add(new Employee("Employee1",1000,null));
-        employeesList.add(new Employee("Employee2",1000,null));
-        employeesList.add(new Employee("Employee3",1000,null));
+        Employee employee = new Employee();
+        employee.setName("Employee1");
+        employee.setUsername("Employee1");
+        employee.setSalary(1000);
+        employee.setRole("EMPLOYEE");
+        employee.setPassword("sample");
+        employeesList.add(employee);
+
+        employee = new Employee();
+        employee.setName("Employee2");
+        employee.setUsername("Employee2");
+        employee.setSalary(2000);
+        employee.setRole("EMPLOYEE");
+        employee.setPassword("sample");
+        employeesList.add(employee);
+
+
+        employee = new Employee();
+        employee.setName("Employee3");
+        employee.setUsername("Employee3");
+        employee.setSalary(2000);
+        employee.setRole("EMPLOYEE");
+        employee.setPassword("sample");
+        employeesList.add(employee);
 
         when(employeeRepository.findAll()).thenReturn(employeesList);
+
 
     }
 
@@ -138,9 +160,12 @@ public class AdminEmployeesControllerTest {
 
     @Test
     public void okResponseWithBasicAuthCredentialsForKnownUser() throws Exception {
+
+        when(employeeRepository.findByUsername("Employee2")).thenReturn(employeesList.get(0));
+
         this.mvc
                 .perform(get("/employees").header(HttpHeaders.AUTHORIZATION,
-                        "Basic " + Base64Utils.encodeToString("employee:my-employee-password".getBytes())))
+                        "Basic " + Base64Utils.encodeToString("Employee2:sample".getBytes())))
                 .andExpect(status().isOk());
     }
 

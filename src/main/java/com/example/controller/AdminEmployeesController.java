@@ -1,7 +1,7 @@
 package com.example.controller;
 
 import com.example.model.entity.Employee;
-import com.example.service.EmployeeService;
+import com.example.service.EmployeeDetailsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,15 +12,15 @@ import java.util.List;
 @RestController
 public class AdminEmployeesController {
 
-    private EmployeeService employeeService;
+    private EmployeeDetailsService employeeDetailsService;
 
-    public AdminEmployeesController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public AdminEmployeesController(EmployeeDetailsService employeeDetailsService) {
+        this.employeeDetailsService = employeeDetailsService;
     }
 
     @GetMapping("/employees")
     public List<Employee> getEmployees() {
-        return employeeService.getAllEmployees();
+        return employeeDetailsService.getAllEmployees();
     }
 
 }
