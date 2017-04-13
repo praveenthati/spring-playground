@@ -1,7 +1,9 @@
 package com.example;
 
+import com.example.controller.AdminEmployeesController;
 import com.example.model.entity.Employee;
 import com.example.model.entityrepository.EmployeeRepository;
+import com.example.security.SecurityConfig;
 import com.example.service.EmployeeDetailsService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,8 +13,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -41,9 +45,8 @@ public class AdminEmployeesControllerTest {
     @Autowired
     MockMvc mvc;
 
-
     @MockBean
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
     private Gson gson = new GsonBuilder().create();
     private List<Employee> employeesList = new ArrayList<>();
 
