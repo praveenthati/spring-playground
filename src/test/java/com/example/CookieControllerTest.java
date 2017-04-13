@@ -27,6 +27,8 @@ public class CookieControllerTest {
     @Autowired
     MockMvc mvc;
 
+
+
     @Test
     public void testCookies() throws Exception {
         this.mvc.perform(get("/cookie").cookie(new Cookie("foo", "bar")))

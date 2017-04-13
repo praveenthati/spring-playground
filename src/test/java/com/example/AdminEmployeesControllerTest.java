@@ -161,7 +161,7 @@ public class AdminEmployeesControllerTest {
     @Test
     public void okResponseWithBasicAuthCredentialsForKnownUser() throws Exception {
 
-        when(employeeRepository.findByUsername("Employee2")).thenReturn(employeesList.get(0));
+        when(employeeRepository.findByUsername("Employee2")).thenReturn(employeesList.get(1));
 
         this.mvc
                 .perform(get("/employees").header(HttpHeaders.AUTHORIZATION,
