@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RequestMapping("/admin")
@@ -19,7 +20,8 @@ public class AdminEmployeesController {
     }
 
     @GetMapping("/employees")
-    public List<Employee> getEmployees() {
+    public List<Employee> getEmployees(HttpServletRequest request) {
+
         return employeeDetailsService.getAllEmployees();
     }
 
